@@ -12,6 +12,7 @@ namespace Turtle.Aop
         }
     }
 
+    //[AopProxy]
     public class TestService : ServiceBase
     {
         public void TestLogic()
