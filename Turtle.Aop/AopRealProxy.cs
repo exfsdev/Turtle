@@ -19,14 +19,10 @@ namespace Turtle.Aop
             _interception = new ConsoleInterception();
         }
 
-        #region IProxyDI Members
-
         public void InterceptionDi(IInterception interception)
         {
             _interception = interception;
         }
-
-        #endregion
 
         public override IMessage Invoke(IMessage msg)
         {
