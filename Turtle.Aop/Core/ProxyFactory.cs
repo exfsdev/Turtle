@@ -10,7 +10,7 @@ namespace Turtle.Aop.Core
         {
             var serverType = typeof(TRealType);
             var target = Activator.CreateInstance(serverType) as MarshalByRefObject;
-            var aopRealProxy = new AopRealProxy<TInterception>(serverType, target);
+            var aopRealProxy = new AopRealProxy<TInterception>(serverType, target, new TInterception());
             aopRealProxy.InterceptionDi(new TInterception());
             return (TRealType) aopRealProxy.GetTransparentProxy();
         }

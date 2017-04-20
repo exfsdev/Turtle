@@ -12,11 +12,11 @@ namespace Turtle.Aop.Core
         private readonly MarshalByRefObject _target;
         private IInterception _interception;
 
-        public AopRealProxy(Type targetType, MarshalByRefObject target)
+        public AopRealProxy(Type targetType, MarshalByRefObject target, IInterception interception)
             : base(targetType)
         {
             _target = target;
-            _interception = new T();
+            _interception = interception;
         }
 
         public void InterceptionDi(IInterception interception)
@@ -27,7 +27,7 @@ namespace Turtle.Aop.Core
         public override IMessage Invoke(IMessage msg)
         {
             IMethodReturnMessage methodReturnMessage = null;
-            var methodCallMessage = msg as IMethodCallMessage; //Check whether the message is method call message.
+            var methodCallMessage = msg as IMethodCallMessage;
             if (methodCallMessage != null)
             {
                 var constructionCallMessage = methodCallMessage as IConstructionCallMessage;
@@ -35,7 +35,9 @@ namespace Turtle.Aop.Core
                 {
                     var defaultProxy = RemotingServices.GetRealProxy(_target);
                     defaultProxy.InitializeServerObject(constructionCallMessage);
-                    methodReturnMessage = EnterpriseServicesHelper.CreateConstructionReturnMessage(constructionCallMessage, (MarshalByRefObject)GetTransparentProxy());
+                    methodReturnMessage =
+                        EnterpriseServicesHelper.CreateConstructionReturnMessage(constructionCallMessage,
+                            (MarshalByRefObject) GetTransparentProxy());
                 }
                 else
                 {
