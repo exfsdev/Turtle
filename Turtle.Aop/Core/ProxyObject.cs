@@ -2,7 +2,7 @@
 
 namespace Turtle.Aop.Core
 {
-    public class ProxyObjBase : MarshalByRefObject
+    public class ProxyObject : MarshalByRefObject
     {
     }
 }
