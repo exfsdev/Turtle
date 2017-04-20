@@ -6,7 +6,7 @@ namespace Turtle.Aop
     {
         private static void Main()
         {
-            var testService = DemoService.GetProxyInstance();
+            var testService = DemoService.GetInstance();
             testService.DemoMethod("Tome", 1, 2L);
             Console.ReadLine();
         }
