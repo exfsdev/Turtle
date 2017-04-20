@@ -3,7 +3,6 @@ using System.Runtime.Remoting.Proxies;
 
 namespace Turtle.Aop
 {
-    /// Description of AopProxyAttribute.
     [AttributeUsage(AttributeTargets.Class)]
     public class AopProxyAttribute : ProxyAttribute
     {

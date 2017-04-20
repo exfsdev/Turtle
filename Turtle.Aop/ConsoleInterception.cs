@@ -1,23 +1,39 @@
 ﻿using System;
+using System.Runtime.Remoting.Messaging;
 
 namespace Turtle.Aop
 {
     public class ConsoleInterception : IInterception
     {
-        /// Before invoke the real instance to do something.
-        public virtual void PreInvoke()
+        // ReSharper disable once InconsistentNaming
+        private const string _LINE = "-------------------------------------";
+
+        public virtual void PreInvoke(IMethodCallMessage methodCallMessage)
         {
-            Console.WriteLine("Aop.ConsoleInterception.PreInvoke");
+            Console.WriteLine(_LINE);
+            Console.WriteLine("START METHOD : {0}", methodCallMessage.MethodName);
+            Console.WriteLine(_LINE);
+            for (var i = 0; i < methodCallMessage.Args.Length; i++)
+                Console.WriteLine("ARG{0} - {1} : {2} : {3}",
+                    i,
+                    methodCallMessage.GetInArgName(i),
+                    methodCallMessage.InArgs[i].GetType(),
+                    methodCallMessage.InArgs[i]);
+            Console.WriteLine();
+            Console.WriteLine(_LINE);
         }
 
-        /// End invoke the real instance to do something.
-        public virtual void AfterInvoke()
+        public virtual void AfterInvoke(IMethodReturnMessage methodReturnMessage)
         {
-            Console.WriteLine("Aop.ConsoleInterception.AfterInvoke");
+            Console.WriteLine(_LINE);
+            Console.WriteLine("METHOD END : {0}", methodReturnMessage.MethodName);
+            Console.WriteLine(_LINE);
+            Console.WriteLine("RETURN VALUE : {0}", methodReturnMessage.ReturnValue);
+            Console.WriteLine();
+            Console.WriteLine(_LINE);
         }
 
-        /// Handling the exception which occurs when the method is invoked.
-        public void ExceptionHandle()
+        public void ExceptionHandle(Exception exception)
         {
             Console.WriteLine("Aop.ConsoleInterception.ExceptionHandle");
         }

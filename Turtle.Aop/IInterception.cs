@@ -1,14 +1,14 @@
-﻿namespace Turtle.Aop
+﻿using System;
+using System.Runtime.Remoting.Messaging;
+
+namespace Turtle.Aop
 {
     public interface IInterception
     {
-        /// Pre the method invoke.
-        void PreInvoke();
+        void PreInvoke(IMethodCallMessage methodCallMessage);
 
-        /// Post the method invoke.
-        void AfterInvoke();
+        void AfterInvoke(IMethodReturnMessage methodReturnMessage);
 
-        /// Handling the exception which occurs when the method is invoked.
-        void ExceptionHandle();
+        void ExceptionHandle(Exception exception);
     }
 }

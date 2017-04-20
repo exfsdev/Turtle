@@ -7,7 +7,7 @@ using System.Runtime.Remoting.Services;
 
 namespace Turtle.Aop
 {
-    public class AopRealProxy : RealProxy, IProxyDi
+    public class AopRealProxy : RealProxy
     {
         private readonly MarshalByRefObject _target;
         private IInterception _interception;
@@ -19,10 +19,14 @@ namespace Turtle.Aop
             _interception = new ConsoleInterception();
         }
 
+        #region IProxyDI Members
+
         public void InterceptionDi(IInterception interception)
         {
             _interception = interception;
         }
+
+        #endregion
 
         public override IMessage Invoke(IMessage msg)
         {
@@ -35,11 +39,13 @@ namespace Turtle.Aop
                 {
                     var defaultProxy = RemotingServices.GetRealProxy(_target);
                     defaultProxy.InitializeServerObject(constructionCallMessage);
-                    methodReturnMessage = EnterpriseServicesHelper.CreateConstructionReturnMessage(constructionCallMessage, (MarshalByRefObject)GetTransparentProxy());
+                    methodReturnMessage =
+                        EnterpriseServicesHelper.CreateConstructionReturnMessage(constructionCallMessage,
+                            (MarshalByRefObject) GetTransparentProxy());
                 }
                 else
                 {
-                    _interception.PreInvoke();
+                    _interception.PreInvoke(methodCallMessage);
                     try
                     {
                         methodReturnMessage = RemotingServices.ExecuteMessage(_target, methodCallMessage);
@@ -49,13 +55,9 @@ namespace Turtle.Aop
                         // ignored
                     }
                     if (methodReturnMessage?.Exception != null)
-                    {
-                        _interception.ExceptionHandle();
-                    }
+                        _interception.ExceptionHandle(methodReturnMessage.Exception);
                     else
-                    {
-                        _interception.AfterInvoke();
-                    }
+                        _interception.AfterInvoke(methodReturnMessage);
                 }
             }
             return methodReturnMessage;

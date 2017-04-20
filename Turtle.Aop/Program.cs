@@ -6,24 +6,23 @@ namespace Turtle.Aop
     {
         private static void Main(string[] args)
         {
-            var service1 = ProxyFactory.CreateProxyInstance<TestService>(new ConsoleInterception()); // work
-            service1.TestLogic();
-
-            Console.WriteLine("----------------------------------------------");
-
-            var service2 = new TestService(); // do not work
-            service2.TestLogic();
-
+            var testService = TestService.GetProxyInstance();
+            testService.HelloTest("Tome", 1, 2L);
             Console.ReadLine();
         }
     }
 
-    [AopProxy]
     public class TestService : ServiceBase
     {
-        public void TestLogic()
+        public static TestService GetProxyInstance()
         {
-            Console.WriteLine("Logic");
+            return ProxyFactory.CreateProxyInstance<TestService>(new ConsoleInterception());
+        }
+
+        public int HelloTest(string a, int b, long c)
+        {
+            Console.WriteLine("Hello world.");
+            return 233;
         }
     }
 }
