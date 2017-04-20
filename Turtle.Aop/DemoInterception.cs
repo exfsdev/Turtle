@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Runtime.Remoting.Messaging;
-using Turtle.Aop.Core;
+using Turtle.Framework.Aop;
 
 namespace Turtle.Aop
 {

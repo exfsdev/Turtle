@@ -42,17 +42,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Core\AopRealProxy.cs" />
-    <Compile Include="Core\IInterception.cs" />
     <Compile Include="DemoInterception.cs" />
     <Compile Include="DemoService.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Core\ProxyFactory.cs" />
-    <Compile Include="Core\ProxyObject.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Turtle.Framework.Aop\Turtle.Framework.Aop.csproj">
+      <Project>{9889d6a6-f336-46e2-a940-94a8dbc8e125}</Project>
+      <Name>Turtle.Framework.Aop</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
