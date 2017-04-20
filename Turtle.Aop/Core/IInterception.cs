@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.Remoting.Messaging;
 
-namespace Turtle.Aop
+namespace Turtle.Aop.Core
 {
     public interface IInterception
     {

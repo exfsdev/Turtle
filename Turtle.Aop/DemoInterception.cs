@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Runtime.Remoting.Messaging;
+using Turtle.Aop.Core;
 
 namespace Turtle.Aop
 {
-    public class ConsoleInterception : IInterception
+    public class DemoInterception : IInterception
     {
         // ReSharper disable once InconsistentNaming
         private const string _LINE = "-------------------------------------";
@@ -35,7 +36,7 @@ namespace Turtle.Aop
 
         public void ExceptionHandle(Exception exception)
         {
-            Console.WriteLine("Aop.ConsoleInterception.ExceptionHandle");
+            Console.WriteLine("Aop.DemoInterception.ExceptionHandle");
         }
     }
 }

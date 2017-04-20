@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Turtle.Aop
+namespace Turtle.Aop.Core
 {
     public class ServiceBase : MarshalByRefObject
     {
