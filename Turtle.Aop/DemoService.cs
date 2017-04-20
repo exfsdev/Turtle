@@ -3,7 +3,7 @@ using Turtle.Aop.Core;
 
 namespace Turtle.Aop
 {
-    public class DemoService : ServiceBase
+    public class DemoService
     {
         public static DemoService GetInstance()
         {
