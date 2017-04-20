@@ -7,7 +7,7 @@ using System.Runtime.Remoting.Services;
 
 namespace Turtle.Aop.Core
 {
-    public class AopRealProxy<T> : RealProxy where T : IInterception, new()
+    public class AopRealProxy : RealProxy
     {
         private readonly MarshalByRefObject _target;
         private IInterception _interception;
