@@ -2,5 +2,5 @@
 
 Turtle.Aop:
 -
-aop demo by using realproxy
+aop proxy demo by using realproxy
 
