@@ -6,21 +6,11 @@ namespace Turtle.Aop
     [AttributeUsage(AttributeTargets.Class)]
     public class AopProxyAttribute : ProxyAttribute
     {
-        private IInterception _interception;
+        private readonly IInterception _interception;
 
         public AopProxyAttribute()
         {
             _interception = new ConsoleInterception();
-        }
-
-        public Type Interception
-        {
-            get => _interception.GetType();
-            set
-            {
-                var interception = Activator.CreateInstance(value) as IInterception;
-                _interception = interception;
-            }
         }
 
         public override MarshalByRefObject CreateInstance(Type serverType)

@@ -35,9 +35,7 @@ namespace Turtle.Aop
                 {
                     var defaultProxy = RemotingServices.GetRealProxy(_target);
                     defaultProxy.InitializeServerObject(constructionCallMessage);
-                    methodReturnMessage =
-                        EnterpriseServicesHelper.CreateConstructionReturnMessage(constructionCallMessage,
-                            (MarshalByRefObject) GetTransparentProxy());
+                    methodReturnMessage = EnterpriseServicesHelper.CreateConstructionReturnMessage(constructionCallMessage, (MarshalByRefObject)GetTransparentProxy());
                 }
                 else
                 {

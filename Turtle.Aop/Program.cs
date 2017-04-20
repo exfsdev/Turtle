@@ -6,17 +6,32 @@ namespace Turtle.Aop
     {
         private static void Main(string[] args)
         {
-            var testService = TestService.GetProxyInstance();
+            var testService = AService.GetProxyInstance();
             testService.HelloTest("Tome", 1, 2L);
             Console.ReadLine();
         }
     }
 
-    public class TestService : ServiceBase
+    public class AService : ServiceBase
     {
-        public static TestService GetProxyInstance()
+        public static AService GetProxyInstance()
         {
-            return ProxyFactory.CreateProxyInstance<TestService>(new ConsoleInterception());
+            return ProxyFactory.CreateProxyInstance<AService>(new ConsoleInterception());
+        }
+
+        public int HelloTest(string a, int b, long c)
+        {
+            Console.WriteLine("Hello world.");
+            return 233;
+        }
+    }
+
+    [AopProxy]
+    public class BService : ServiceBase
+    {
+        public static BService GetProxyInstance()
+        {
+            return ProxyFactory.CreateProxyInstance<BService>(new ConsoleInterception());
         }
 
         public int HelloTest(string a, int b, long c)
