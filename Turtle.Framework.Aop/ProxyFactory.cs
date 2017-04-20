@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Turtle.Aop.Core
+namespace Turtle.Framework.Aop
 {
     public class ProxyFactory
     {

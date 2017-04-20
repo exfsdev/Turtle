@@ -1,14 +1,15 @@
 ﻿using System.Reflection;
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Turtle.Aop")]
+[assembly: AssemblyTitle("Turtle.Framework.Aop")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Turtle.Aop")]
+[assembly: AssemblyProduct("Turtle.Framework.Aop")]
 [assembly: AssemblyCopyright("Copyright ©  2017")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -19,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("d06df1b1-554b-44de-8085-61febf0823f3")]
+[assembly: Guid("9889d6a6-f336-46e2-a940-94a8dbc8e125")]
 
 // Version information for an assembly consists of the following four values:
 //
