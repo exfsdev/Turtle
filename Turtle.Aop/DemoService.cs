@@ -3,7 +3,7 @@ using Turtle.Aop.Core;
 
 namespace Turtle.Aop
 {
-    public class DemoService
+    public class DemoService : ProxyObjBase
     {
         public static DemoService GetInstance()
         {
